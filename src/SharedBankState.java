@@ -77,14 +77,24 @@ public class SharedBankState {
 
         if (operation.equalsIgnoreCase("transfer")) {
             String account2 = actions[2];
-
             if (myThreadName.equals("BankServerThread1")) {
                 int firstAccValue = mySharedVariable.get("A") - amount;
                 mySharedVariable.put("A", firstAccValue);
-                theOutput = performAddition(account2, amount);
+                String add = performAddition(account2, amount);
+                theOutput = String.valueOf(mySharedVariable.get("A"));
             }
-
-
+            else if(myThreadName.equals("BankServerThread2")) {
+                int firstAccValue = mySharedVariable.get("B") - amount;
+                mySharedVariable.put("B", firstAccValue);
+                String add = performAddition(account2, amount);
+                theOutput = String.valueOf(mySharedVariable.get("B"));
+            }
+            else if (myThreadName.equals("BankServerThread3")) {
+                int firstAccValue = mySharedVariable.get("C") - amount;
+                mySharedVariable.put("C", firstAccValue);
+                String add = performAddition(account2, amount);
+                theOutput = String.valueOf(mySharedVariable.get("C"));
+            }
         }
 
         System.out.println(mySharedVariable);
@@ -107,3 +117,4 @@ public class SharedBankState {
     }
 
 }
+
