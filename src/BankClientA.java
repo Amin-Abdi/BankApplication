@@ -37,8 +37,7 @@ public class BankClientA {
             }
 
             fromServer = in.readLine();
-            System.out.println(bankClientId + " received " + fromServer + " from bankServer");
-
+            System.out.println("Balance: " + fromServer);
         }
     }
 }
