@@ -13,7 +13,7 @@ public class BankServer {
 
         //double sharedVariable = 100;
         HashMap<String, Integer> sharedVariable = new HashMap<>();
-        sharedVariable.put("A", 450);
+        sharedVariable.put("A", 1000);
         sharedVariable.put("B", 1000);
         sharedVariable.put("C", 1000);
 

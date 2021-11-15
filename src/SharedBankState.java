@@ -46,7 +46,6 @@ public class SharedBankState {
         String theOutput = null;
 
         String[] actions = theInput.split(" ");
-        //System.out.println(Arrays.toString(actions));
         String operation = actions[0];
         int amount = Integer.parseInt(actions[1]);
 
@@ -70,13 +69,26 @@ public class SharedBankState {
             if (myThreadName.equals("BankServerThread1")) {
                 theOutput = performSubtraction("A", amount);
             } else if (myThreadName.equals("BankServerThread2")) {
-                theOutput = theOutput = performSubtraction("B", amount);
+                theOutput = performSubtraction("B", amount);
             } else if (myThreadName.equals("BankServerThread3")) {
                 theOutput = performSubtraction("C", amount);
             }
         }
 
+        if (operation.equalsIgnoreCase("transfer")) {
+            String account2 = actions[2];
+
+            if (myThreadName.equals("BankServerThread1")) {
+                int firstAccValue = mySharedVariable.get("A") - amount;
+                mySharedVariable.put("A", firstAccValue);
+                theOutput = performAddition(account2, amount);
+            }
+
+
+        }
+
         System.out.println(mySharedVariable);
+        System.out.println("The output: " +theOutput);
         return theOutput;
     }
 

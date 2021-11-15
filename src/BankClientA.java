@@ -32,7 +32,7 @@ public class BankClientA {
         while (true) {
             fromUser = stdIn.readLine();
             if (fromUser != null) {
-                System.out.println(bankClientId + " sending " + fromUser + " to bankServer");
+//                System.out.println(bankClientId + " sending " + fromUser + " to bankServer");
                 out.println(fromUser);
             }
 
